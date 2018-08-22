@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class PartnersConfig(AppConfig):
-    name = 'partners'
+    name = 'chatty_back.partners'
