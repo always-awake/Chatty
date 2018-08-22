@@ -71,7 +71,9 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'chatty_back.users.apps.UsersAppConfig',
-    # Your stuff: custom apps go here
+    'chatty_back.diary.apps.DiaryConfig',
+    'chatty_back.partners.apps.PartnersConfig',
+    'chatty_back.chatty_users.apps.ChattyUsersConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
