@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9fff12dd2f9c711e6be65e4b81e5ff9cc224ff3beace46d1d6b9aed8df59a7bd"
+            "sha256": "6069004db43235245107d95791198838b1bf428a927e249f37c32cada363fa87"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -35,6 +35,13 @@
                 "sha256:b63b1f4dc77c074d386752ec4a8a7517600f6c0db8cd42980cae17ab7b3275d7"
             ],
             "version": "==0.7.11"
+        },
+        "aldjemy": {
+            "hashes": [
+                "sha256:b52e9bd1833d77cf7cd93710ac1e1ffb3672fbe9aad88c9bb758be2cabe4e0b1",
+                "sha256:0293596fe0926a9f598fa0e0de5e4e4150ed62dd29a1bc07539787cacc4f7ee5"
+            ],
+            "version": "==0.8.0"
         },
         "appnope": {
             "hashes": [
@@ -689,6 +696,7 @@
                 "sha256:1adb80e7a782c12e52ef9a8182bebeb73f1d7e24e374397af06fb4956c8dc5c0",
                 "sha256:e27001de32f627c22380a688bcc43ce83504a7bc5da472209b4c70f02829f0b8"
             ],
+            "markers": "python_version >= '2.7'",
             "version": "==2.7.3"
         },
         "python-slugify": {
@@ -773,6 +781,12 @@
                 "sha256:9de47f375baf1ea07cdb3436ff39d7a9c76042c10a769c52353ec46e4e8fc3b9"
             ],
             "version": "==1.1.0"
+        },
+        "sqlalchemy": {
+            "hashes": [
+                "sha256:ef6569ad403520ee13e180e1bfd6ed71a0254192a934ec1dbd3dbf48f4aa9524"
+            ],
+            "version": "==1.2.11"
         },
         "sqlparse": {
             "hashes": [

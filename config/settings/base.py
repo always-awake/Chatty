@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+
 ]
 LOCAL_APPS = [
     'chatty_back.users.apps.UsersAppConfig',
