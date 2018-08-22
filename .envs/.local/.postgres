@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=chatty_back
+POSTGRES_USER=hUkufgMkBtVNGlgKdwPfPwTXGNOQiatb
+POSTGRES_PASSWORD=ODCS1HdKKHSFrmdmAvCbqhAKiSH8OIygYfiV46lxDYJTBLiLGEC0Javw9Ycv5BX3
