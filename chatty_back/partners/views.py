@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
-from chatty.diary.views import check_user
+from chatty_back.diary.views import check_user
 
 
 def get_partner(self, partner_id, creator):
@@ -126,7 +126,7 @@ class SetPartner(APIView):
 
         else:
 
-            user.partner = found_partner.name
+            user.partner = found_partner
 
             user.save()
 
