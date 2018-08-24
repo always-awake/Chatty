@@ -5,7 +5,7 @@ from . import models
 class ListUserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.User
+        model = models.ChattyUser
         fields = (
             'id',
             'name',
@@ -16,7 +16,7 @@ class ListUserSerializer(serializers.ModelSerializer):
 class NewUserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.User
+        model = models.ChattyUser
         fields = (
             'name',
             'unique_user_id',
