@@ -19,6 +19,22 @@ urlpatterns = [
         "users/",
         include("chatty_back.users.urls", namespace="users"),
     ),
+
+    path(
+        "chatty_users/",
+        include("chatty_back.chatty_users.urls", namespace="chatty_users"),
+    ),
+
+    path(
+        "diary/",
+        include("chatty_back.diary.urls", namespace="diary"),
+    ),
+
+    path(
+        "partners/",
+        include("chatty_back.partners.urls", namespace="partnsers"),
+    ),
+
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(
