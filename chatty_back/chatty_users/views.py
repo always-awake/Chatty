@@ -1,8 +1,11 @@
+from django.utils.decorators import method_decorator
 from django.utils.crypto import get_random_string
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from chatty_back.diary.views import check_user
+
 
 
 class NewUser(APIView):
@@ -33,3 +36,15 @@ class NewUser(APIView):
                 else:
 
                     return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class Main(APIView):
+
+    """ Main """
+
+    @method_decorator(check_user())
+    def get(self, request, user, format=None):
+        
+        serializer = serializers.MainSerializer(user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
