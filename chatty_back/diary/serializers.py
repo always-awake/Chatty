@@ -3,6 +3,7 @@ from . import models
 from chatty_back.chatty_users import serializers as chattyuser_serializers
 
 
+
 class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -69,6 +70,15 @@ class AnswerSerializer_view(serializers.ModelSerializer):
         )
 
 
+class MainAnswerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.User_answer
+        fields = (
+            'answer',
+        )
+
+
 class DiaryDetailSerializer(serializers.ModelSerializer):
 
     answers = AnswerSerializer_view(many=True)
@@ -102,27 +112,27 @@ class LastAnswerSerializer(serializers.ModelSerializer):
         )
 
 
-#class MainDiarySerializer(serializers.ModelSerializer):
-
-    #answers = AnswerSerializer_view(many=True)
-    #last_answer = LastAnswerSerializer(many=True)
-
-    #class Meta:
-        #model = models.Single_diary
-        #fields = (
-            #'partner',
-            #'id',
-            #'created_at',
-        #)
-
-
 class StartChatSerializer(serializers.ModelSerializer):
 
-    first_question = QuestionSerializer()
+    question = QuestionSerializer()
 
     class Meta:
         model = models.Single_diary
         fields = (
             'id',
-            'first_question',
+            'question',
+        )
+
+
+class MainDiarySerializer(serializers.ModelSerializer):
+    
+    answer = MainAnswerSerializer()
+
+    class Meta:
+        model = models.Single_diary
+        fields = (
+            'id',
+            'image',
+            'created_at',
+            'answer'
         )
