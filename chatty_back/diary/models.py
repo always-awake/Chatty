@@ -23,7 +23,7 @@ class Question(TimeStampedModel):
 
     message = models.TextField()
     creator = models.ForeignKey(
-        chattyuser_models.ChattyUser, on_delete=models.CASCADE, related_name="questions", null=True
+        chattyuser_models.ChattyUser, on_delete=models.CASCADE, related_name="questions", blank=True, null=True
         )
 
     def __str__(self):
@@ -95,10 +95,14 @@ class Single_diary(TimeStampedModel):
         except:
             return None
 
+    # first_question
     @property
-    def first_question(self):
+    def question(self):
         return self.questions[0]
 
+    @property 
+    def answer(self):
+        return self.answers.all()[0]
 
     def __str__(self):
         return 'creator: {} - id: {}'.format (self.creator.name, self.id)
