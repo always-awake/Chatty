@@ -4,9 +4,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 import datetime
-from . import models, serializers
 from chatty_back.chatty_users import models as chattyuser_models
 from chatty_back.partners import models as partners_models
+from . import models, serializers
 
 
 def check_user():
@@ -45,7 +45,7 @@ class Startchat(APIView):
             #weather을 가져오기
 
             question_set = models.Question_set.objects.get(id=1)
-            #
+            print(question_set)
             serializer = serializers.DiarySerializer_store(data=request.data)
 
             if serializer.is_valid():
@@ -53,7 +53,7 @@ class Startchat(APIView):
                 new_diary_id = serializer.save(creator=user, question_set=question_set, partner=user.partner).id
 
                 new_diary = models.Single_diary.objects.get(id=new_diary_id)
-                    
+                
                 serializer = serializers.StartChatSerializer(new_diary)
 
                 return Response(data=serializer.data, status=status.HTTP_201_CREATED)
