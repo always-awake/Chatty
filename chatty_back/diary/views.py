@@ -178,3 +178,17 @@ class AddQuestion(APIView):
         else:
 
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class QuestionList(APIView):
+
+    """ Question List """
+
+    @method_decorator(check_user())
+    def get(self, request, user, format=None):
+
+        user_question = models.Question.objects.filter(creator=user)
+
+        serializer = serializers.QuestionSerializer(user_question, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
