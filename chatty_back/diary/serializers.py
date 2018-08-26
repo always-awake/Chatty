@@ -136,3 +136,4 @@ class MainDiarySerializer(serializers.ModelSerializer):
             'created_at',
             'answer'
         )
+
