@@ -160,7 +160,7 @@ class OtherMonth_Calendar(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
-class AddQuestion(APIView):
+class Question(APIView):
 
     """ Add Question """
 
@@ -179,6 +179,16 @@ class AddQuestion(APIView):
 
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    
+    """ Delete Question """
+
+    @method_decorator(check_user())
+    def delete(self, request, user, format=None):
+
+        pass
+
+        #questions_to_delete = models.Question.objects.filter(creator=user)
+
 
 class QuestionList(APIView):
 
@@ -192,3 +202,6 @@ class QuestionList(APIView):
         serializer = serializers.QuestionSerializer(user_question, many=True)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+

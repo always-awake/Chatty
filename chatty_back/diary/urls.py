@@ -8,6 +8,6 @@ urlpatterns = [
     path('detail/<int:diary_id>/', views.DiaryDetail.as_view(), name='diary detail'),
     path('calendar/', views.ThisMonth_Calendar.as_view(), name='this month calendar'),
     path('calendar/<int:month>/', views.OtherMonth_Calendar.as_view(), name='other month calendar'),
-    path('question/', views.AddQuestion.as_view(), name='add question'),
+    path('question/', views.Question.as_view(), name='add question & delete question'),
     path('question/list/', views.QuestionList.as_view(), name='list question'),
 ]
