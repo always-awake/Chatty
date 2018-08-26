@@ -47,15 +47,6 @@ class PartnerListSerializer(serializers.ModelSerializer):
         )
 
 
-#class SetPartnerSerializer(serializers.ModelSerializer):
-
-    #class Meta:
-        #model = chattyuser_models.ChattyUser
-        #fields = (
-        #    'partner',
-        #)
-
-
 class MainPartnerSerializer(serializers.ModelSerializer):
 
     class Meta:
