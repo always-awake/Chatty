@@ -180,12 +180,12 @@ class Question(APIView):
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     
-    """ Delete Question """
+    #""" Delete Question """
 
-    @method_decorator(check_user())
-    def delete(self, request, user, format=None):
+    #@method_decorator(check_user())
+    #def delete(self, request, user, format=None):
 
-        pass
+        #pass
 
         #questions_to_delete = models.Question.objects.filter(creator=user)
 
