@@ -137,3 +137,11 @@ class MainDiarySerializer(serializers.ModelSerializer):
             'answer'
         )
 
+
+class FeelingSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Single_diary
+        fields = (
+            'feeling'
+        )
