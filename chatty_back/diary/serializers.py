@@ -75,6 +75,7 @@ class MainAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User_answer
         fields = (
+            'id',
             'answer',
         )
 
