@@ -62,20 +62,12 @@ class Single_diary(TimeStampedModel):
 
     """ Single diary table """
 
-    FEELING_CHOICES = (
-        ('Joy', 'Joy'),
-        ('Soso', 'Soso'),
-        ('Sentimental', 'Sentimental'),
-        ('Sad', 'Sad'),
-        ('Angry', 'Angry'),
-    )
-
     creator = models.ForeignKey(chattyuser_models.ChattyUser, on_delete=models.CASCADE, related_name="diaries")
     question_set = models.ForeignKey(Question_set, on_delete=models.CASCADE)
     state = models.CharField(max_length=80, null=True)
     partner = models.ForeignKey(
         partner_models.Partner, on_delete=models.CASCADE, related_name="diaries", null=True)
-    feeling = models.CharField(max_length=80, choices=FEELING_CHOICES, null=True, blank=True)
+    feeling = models.CharField(max_length=80, null=True, blank=True)
 
     class Meta:
         ordering = ['-created_at']
