@@ -28,6 +28,7 @@ class CreatePartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Partner
         fields = (
+            'id',
             'profile_image',
             'name', 
             'bio',
