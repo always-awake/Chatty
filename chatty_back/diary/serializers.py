@@ -53,7 +53,7 @@ class AnswerSerializer_store(serializers.ModelSerializer):
         model = models.User_answer
         fields = (
             'id',
-            'answer',
+            'label',
         )
 
        
@@ -64,7 +64,7 @@ class AnswerSerializer_view(serializers.ModelSerializer):
         model = models.User_answer
         fields = (
             'question',
-            'answer',
+            'label',
             'image',
             'created_at',
         )
@@ -76,7 +76,8 @@ class MainAnswerSerializer(serializers.ModelSerializer):
         model = models.User_answer
         fields = (
             'id',
-            'answer',
+            'image',
+            'label',
         )
 
 
@@ -133,7 +134,6 @@ class MainDiarySerializer(serializers.ModelSerializer):
         model = models.Single_diary
         fields = (
             'id',
-            'image',
             'created_at',
             'answer'
         )

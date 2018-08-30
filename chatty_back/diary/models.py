@@ -117,7 +117,7 @@ class User_answer(TimeStampedModel):
     creator = models.ForeignKey(chattyuser_models.ChattyUser, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     image = models.ImageField(blank=True, null=True)
-    answer = models.TextField()
+    label = models.TextField()
 
 
     def __str__(self):

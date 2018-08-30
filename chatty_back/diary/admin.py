@@ -35,7 +35,7 @@ class Single_diaryAdmin(admin.ModelAdmin):
 class User_answerAdmin(admin.ModelAdmin):
 
     list_display = (
-        'answer',
+        'label',
         'diary',
         'creator',
     )
