@@ -44,7 +44,7 @@ class Startchat(APIView):
 
             #weather을 가져오기
 
-            question_set = models.Question_set.objects.get(id=1)
+            question_set = models.Question_set.objects.get(id=2)
             print(question_set)
             serializer = serializers.DiarySerializer_store(data=request.data)
 
