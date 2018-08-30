@@ -141,7 +141,7 @@ class MainPartner(APIView):
     @method_decorator(check_user())
     def get(self, request, user, format=None):
 
-        found_partner = get_partner(self, partner_id, user)
+        found_partner = user.partner
 
         if found_partner is None:
 
