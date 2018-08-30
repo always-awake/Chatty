@@ -242,7 +242,7 @@ class MainDiary(APIView):
 
         else:
 
-            serializer = serializers.MMainDiarySerializer(user_diaries, many=True)
+            serializer = serializers.MainDiarySerializer(user_diaries, many=True)
 
-            return Response(data=serializer.data, status=status.HTTP_200_OK))
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
 
