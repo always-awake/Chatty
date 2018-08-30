@@ -133,3 +133,22 @@ class SetPartner(APIView):
             user.save()
 
             return Response(status=status.HTTP_200_OK)
+
+
+# Main 화면에 있는 Partner 부분(Main 화면의 module화를 위한 API)
+class MainPartner(APIView):
+
+    @method_decorator(check_user())
+    def get(self, request, user, format=None):
+
+        found_partner = get_partner(self, partner_id, user)
+
+        if found_partner is None:
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        else:
+
+            serializer = serializers.MainPartnerSerializer(found_partner)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
