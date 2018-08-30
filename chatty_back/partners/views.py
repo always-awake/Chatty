@@ -55,7 +55,7 @@ class Partner(APIView):
 class PartnerProfile(APIView):
 
     @method_decorator(check_user())
-    def get(self, request, partner_id, format=None):
+    def get(self, request, user, partner_id, format=None):
 
         found_partner = get_partner(self, partner_id, user)
 
