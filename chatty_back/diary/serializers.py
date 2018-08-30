@@ -146,3 +146,14 @@ class FeelingSerializer(serializers.ModelSerializer):
         fields = (
             'feeling'
         )
+
+
+
+## 임시 APi
+class QS_Serializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Question_set
+        fields = (
+            'question_list',
+        )

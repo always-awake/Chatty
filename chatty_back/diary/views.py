@@ -244,3 +244,20 @@ class MainDiary(APIView):
 
             return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+
+class CreateQuestionSet(APIView):
+
+    @method_decorator(check_user())
+    def post(self, request, user, format=None):
+
+        serializer = serializers.QS_Serializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+
+        else:
+
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
