@@ -13,9 +13,7 @@ def check_user():
     def decorator(func):
         def wrapper(request, *args, **kwargs):
 
-            #request_unique_user_id = request.META.get('HTTP_HASH', None)
-
-            request_unique_user_id = 'JBDOeklbr873KJBAS93710KJVSIfoi'
+            request_unique_user_id = request.META.get('HTTP_HASH', None)
 
             try:
                 user = chattyuser_models.ChattyUser.objects.get(unique_user_id=request_unique_user_id)
