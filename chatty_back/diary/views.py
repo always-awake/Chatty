@@ -13,7 +13,9 @@ def check_user():
     def decorator(func):
         def wrapper(request, *args, **kwargs):
 
-            request_unique_user_id = request.META.get('HTTP_HASH', None)
+            #request_unique_user_id = request.META.get('HTTP_HASH', None)
+
+            request_unique_user_id = 'JBDOeklbr873KJBAS93710KJVSIfoi'
 
             try:
                 user = chattyuser_models.ChattyUser.objects.get(unique_user_id=request_unique_user_id)
@@ -227,4 +229,20 @@ class QuestionList(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
+class MainDiary(APIView):
+
+    @method_decorator(check_user())
+    def get(self, request, user, format=None):
+
+        user_diaries = models.Single_diary.objects.filter(creator=user, state='complete')
+
+        if user_diaries is None:
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        else:
+
+            serializer = serializers.MMainDiarySerializer(user_diaries, many=True)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK))
 

@@ -3,6 +3,7 @@ from . import views
 
 app_name = "diary"
 urlpatterns = [
+    path('main/', views.MainDiary.as_view(), name='main diaries module'),
     path('startchat/', views.Startchat.as_view(), name='start chat'),
     path('chat/<int:diary_id>/', views.Chat.as_view(), name='chat'),
     path('feeling/<int:diary_id>', views.Feeling.as_view(), name='feeling'),
