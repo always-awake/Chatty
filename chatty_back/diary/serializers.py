@@ -128,7 +128,7 @@ class StartChatSerializer(serializers.ModelSerializer):
 
 class MainDiarySerializer(serializers.ModelSerializer):
     
-    answer = MainAnswerSerializer()
+    answer = MainAnswerSerializer(many=True)
 
     class Meta:
         model = models.Single_diary

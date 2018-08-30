@@ -102,7 +102,7 @@ class Single_diary(TimeStampedModel):
 
     @property 
     def answer(self):
-        return self.answers.all()[0]
+        return self.answers.all()
 
     def __str__(self):
         return 'creator: {} - id: {}'.format (self.creator.name, self.id)
