@@ -6,14 +6,16 @@ from chatty_back.chatty_users import serializers as chattyuser_serializers
 
 class QuestionSerializer(serializers.ModelSerializer):
 
+    question_id = serializers.IntegerField(source='id')
+
     class Meta:
         model = models.Question
         fields = (
-            'id',
+            'question_id',
             'message',
             #질문 내용과 질문 id를 보여줌
         )
-
+        extra_kwargs = {'message': {'required': True}}
 
 class Question_setSerializer(serializers.ModelSerializer):
 
@@ -26,33 +28,12 @@ class Question_setSerializer(serializers.ModelSerializer):
         )
 
 
-class DiarySerializer_store(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Single_diary
-        fields = (
-        )
-
-
-class DiarySerializer_view(serializers.ModelSerializer):
-    
-    current_question = QuestionSerializer()
-
-    class Meta:
-        model = models.Single_diary
-        fields = (
-            'id',
-            'current_question',          
-        )
-
-
 #answer 저장을 위한 시리얼라이즈
 class AnswerSerializer_store(serializers.ModelSerializer):
 
     class Meta:
         model = models.User_answer
         fields = (
-            'id',
             'label',
         )
 
@@ -72,12 +53,27 @@ class AnswerSerializer_view(serializers.ModelSerializer):
 
 class MainAnswerSerializer(serializers.ModelSerializer):
 
+    answer_id = serializers.IntegerField(source='id')
+
     class Meta:
         model = models.User_answer
         fields = (
-            'id',
+            'answer_id',
             'image',
             'label',
+        )
+
+
+class DiarySerializer_view(serializers.ModelSerializer):
+    
+    current_question = QuestionSerializer()
+    diary_id = serializers.IntegerField(source='id')
+    
+    class Meta:
+        model = models.Single_diary
+        fields = (
+            'diary_id',
+            'current_question',          
         )
 
 
@@ -97,10 +93,12 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
 
 class CalendarSerializer(serializers.ModelSerializer):
 
+    diary_id = serializers.IntegerField(source='id')
+
     class Meta:
         model = models.Single_diary
         fields = (
-            'id',
+            'diary_id',
             'created_at',
         )
 
@@ -117,36 +115,28 @@ class LastAnswerSerializer(serializers.ModelSerializer):
 class StartChatSerializer(serializers.ModelSerializer):
 
     question = QuestionSerializer()
+    diary_id = serializers.IntegerField(source='id')
 
     class Meta:
         model = models.Single_diary
         fields = (
-            'id',
+            'diary_id',
             'question',
         )
 
 
 class MainDiarySerializer(serializers.ModelSerializer):
     
-    answer = MainAnswerSerializer(many=True)
+    last_answer = MainAnswerSerializer(many=True)
+    diary_id = serializers.IntegerField(source='id')
 
     class Meta:
         model = models.Single_diary
         fields = (
-            'id',
+            'diary_id',
             'created_at',
-            'answer'
+            'last_answer'
         )
-
-
-class FeelingSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Single_diary
-        fields = (
-            'feeling'
-        )
-
 
 
 ## 임시 APi
