@@ -134,7 +134,7 @@ class SetPartner(APIView):
 
 
 # Main 화면에 있는 Partner 부분(Main 화면의 module화를 위한 API)
-class MainPartner(APIView):
+class Partner_Main(APIView):
 
     @method_decorator(check_user())
     def get(self, request, user, format=None):
