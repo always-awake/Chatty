@@ -9,11 +9,12 @@ class PartnerProfileSerializer(serializers.ModelSerializer):
     diary_count = serializers.ReadOnlyField()
     days_together = serializers.ReadOnlyField()
     created_at = serializers.ReadOnlyField()
+    partner_id = serializers.IntegerField(source='id')
 
     class Meta:
         model = models.Partner
         fields = (
-            'id',
+            'partner_id',
             'profile_image',
             'name',
             'bio',
@@ -25,10 +26,12 @@ class PartnerProfileSerializer(serializers.ModelSerializer):
 
 class CreatePartnerSerializer(serializers.ModelSerializer):
 
+    partner_id = serializers.IntegerField(source='id')
+
     class Meta:
         model = models.Partner
         fields = (
-            'id',
+            'partner_id',
             'profile_image',
             'name', 
             'bio',
@@ -38,23 +41,29 @@ class CreatePartnerSerializer(serializers.ModelSerializer):
 
 class PartnerListSerializer(serializers.ModelSerializer):
 
+    partner_id = serializers.IntegerField(source='id')
+
     class Meta:
         model = models.Partner
         fields = (
-            'id',
+            'partner_id',
             'profile_image',
             'name',
+            'bio',
             'created_at',
         )
 
 
 class MainPartnerSerializer(serializers.ModelSerializer):
 
+    partner_id = serializers.IntegerField(source='id')
+
     class Meta:
         model = models.Partner
         fields = (
-            'id',
+            'partner_id',
+            'profile_image',
             'name',
-            'days_together',
             'diary_count',
+            'days_together',
         )
