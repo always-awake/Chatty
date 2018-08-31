@@ -21,7 +21,7 @@ class Question(TimeStampedModel):
 
     """ Single question Model """
 
-    message = models.TextField()
+    message = models.TextField(max_length=30)
     creator = models.ForeignKey(
         chattyuser_models.ChattyUser, on_delete=models.CASCADE, related_name="questions", blank=True, null=True
         )
@@ -100,9 +100,11 @@ class Single_diary(TimeStampedModel):
     def question(self):
         return self.questions[0]
 
+    # last_answer
     @property 
-    def answer(self):
-        return self.answers.all()
+    def last_answer(self):
+        answers = self.answers.all()
+        return answers
 
     def __str__(self):
         return 'creator: {} - id: {}'.format (self.creator.name, self.id)
