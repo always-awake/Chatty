@@ -227,7 +227,7 @@ class QuestionList(APIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
-class MainDiary(APIView):
+class Diary_Main(APIView):
 
     @method_decorator(check_user())
     def get(self, request, user, format=None):
