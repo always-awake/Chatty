@@ -37,30 +37,20 @@ class Startchat(APIView):
         
         try: 
             today_diary = models.Single_diary.objects.get(created_at__day=request_day)
-
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
-
+            return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
         except models.Single_diary.DoesNotExist:
 
             #weather을 가져오기
 
-            question_set = models.Question_set.objects.get(id=2)
-            print(question_set)
-            serializer = serializers.DiarySerializer_store(data=request.data)
+            question_set = models.Question_set.objects.get(id=1) #테스트 -> 이후에 랜덤 추출로 변경 필요
 
-            if serializer.is_valid():
+            new_diary = models.Single_diary.objects.create(creator=user, question_set=question_set, partner=user.partner)
 
-                new_diary_id = serializer.save(creator=user, question_set=question_set, partner=user.partner).id
+            new_diary.save()
 
-                new_diary = models.Single_diary.objects.get(id=new_diary_id)
-                
-                serializer = serializers.StartChatSerializer(new_diary)
+            serializer = serializers.StartChatSerializer(new_diary)
 
-                return Response(data=serializer.data, status=status.HTTP_201_CREATED)
-                
-            else:
-
-                return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)        
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
             
 
 class Chat(APIView):
@@ -190,7 +180,7 @@ class Question(APIView):
     @method_decorator(check_user())
     def post(self, request, user, format=None):
 
-        serializer = serializers.QuestionSerializer(data=request.data)
+        serializer = serializers.QuestionSerializer(data=request.data, partial=True)
 
         if serializer.is_valid():
 
@@ -201,16 +191,6 @@ class Question(APIView):
         else:
 
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    
-    #""" Delete Question """
-
-    #@method_decorator(check_user())
-    #def delete(self, request, user, format=None):
-
-        #pass
-
-        #questions_to_delete = models.Question.objects.filter(creator=user)
 
 
 class QuestionList(APIView):
@@ -245,6 +225,7 @@ class Diary_Main(APIView):
             return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
+#임시 API
 class CreateQuestionSet(APIView):
 
     @method_decorator(check_user())
