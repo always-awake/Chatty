@@ -112,14 +112,17 @@ class Single_diary(TimeStampedModel):
 class User_answer(TimeStampedModel):
 
     """ User answer Model """
-
+    
     diary = models.ForeignKey(Single_diary, on_delete=models.CASCADE, related_name='answers')
     creator = models.ForeignKey(chattyuser_models.ChattyUser, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     image = models.ImageField(blank=True, null=True)
-    label = models.TextField()
+    label = models.TextField() # answer 의 내용
 
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.answer
+
 
