@@ -106,6 +106,11 @@ class Single_diary(TimeStampedModel):
         answers = self.answers.all()
         return answers
 
+    @property
+    def answers(self):
+        answers = answers.all()
+        return answers
+
     def __str__(self):
         return 'creator: {} - id: {}'.format (self.creator.name, self.id)
 
@@ -122,7 +127,7 @@ class User_answer(TimeStampedModel):
     label = models.TextField() # answer 의 내용
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ["id"]
 
     def __str__(self):
         return self.answer
