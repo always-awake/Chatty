@@ -7,6 +7,8 @@ import datetime
 from chatty_back.chatty_users import models as chattyuser_models
 from chatty_back.partners import models as partners_models
 from . import models, serializers
+import requests
+import json
 
 
 def check_user():
@@ -26,6 +28,20 @@ def check_user():
     return decorator
 
 
+def get_weather(self, city):
+
+    api_address = 'http://api.openweathermap.org/data/2.5/weather?appid=63321e5f0464f10f168bb0d73ad4512b&q='
+
+    url = api_address + city
+    
+    response = requests.get(url)
+    
+    response_json = response.json()
+
+    weather = response_json['weather'][0]['main']
+
+    return weather
+
 class Startchat(APIView):
 
     """ 채팅을 처음 시작했을 때 """
@@ -40,11 +56,11 @@ class Startchat(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
         except models.Single_diary.DoesNotExist:
 
-            #weather을 가져오기
+            weather = get_weather(self, 'Seoul')
 
-            question_set = models.Question_set.objects.get(id=1) #테스트 -> 이후에 랜덤 추출로 변경 필요
+            question_set = models.Question_set.objects.get(id=1) # 테스트 -> 이후에 랜덤 추출로 변경 필요
 
-            new_diary = models.Single_diary.objects.create(creator=user, question_set=question_set, partner=user.partner)
+            new_diary = models.Single_diary.objects.create(creator=user, question_set=question_set, partner=user.partner, weather=weather)
 
             new_diary.save()
 
