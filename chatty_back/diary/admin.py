@@ -25,6 +25,7 @@ class Single_diaryAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'state',
+        'weather',
         'creator',
         'question_set',
         'created_at',

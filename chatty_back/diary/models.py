@@ -68,6 +68,7 @@ class Single_diary(TimeStampedModel):
     partner = models.ForeignKey(
         partner_models.Partner, on_delete=models.CASCADE, related_name="diaries", null=True)
     feeling = models.CharField(max_length=80, null=True, blank=True)
+    weather = models.CharField(max_length=20, null=True)
 
     class Meta:
         ordering = ['-created_at']
