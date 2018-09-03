@@ -85,6 +85,7 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Single_diary
         fields = (
+            'weather',
             'questions',
             'answers',
             'created_at',
