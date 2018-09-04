@@ -11,6 +11,7 @@ import requests
 import json
 
 
+# request 유저가 회원가입이 되어 있는 유저인지 확인하는 함수
 def check_user():
     def decorator(func):
         def wrapper(request, *args, **kwargs):
@@ -28,6 +29,7 @@ def check_user():
     return decorator
 
 
+# 처음 일기를 작성할 때 자동으로 날씨 정보를 가져오는 함수
 def get_weather(self, city):
 
     api_address = 'http://api.openweathermap.org/data/2.5/weather?appid=63321e5f0464f10f168bb0d73ad4512b&q='
@@ -42,6 +44,7 @@ def get_weather(self, city):
 
     return weather
 
+
 class Startchat(APIView):
 
     """ 채팅을 처음 시작했을 때 """
@@ -54,6 +57,7 @@ class Startchat(APIView):
         try: 
             today_diary = models.Single_diary.objects.get(created_at__day=request_day)
             return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
+
         except models.Single_diary.DoesNotExist:
 
             weather = get_weather(self, 'Seoul')
