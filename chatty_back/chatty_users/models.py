@@ -8,7 +8,7 @@ class ChattyUser(models.Model):
 
     name = models.CharField(null=True, max_length=80)
     unique_user_id = models.CharField(null=True, max_length=40)
-    partner = models.ForeignKey('partners.Partner', on_delete=models.CASCADE, related_name="partners", null=True, blank=True)
+    partner = models.ForeignKey('partners.Partner', on_delete=models.CASCADE, related_name="partner", null=True, blank=True)
 
 
     def __str__(self):
