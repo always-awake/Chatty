@@ -1,9 +1,10 @@
 from django.utils.decorators import method_decorator
 from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework.response import Response 
 from rest_framework import status
 from . import models, serializers
 from chatty_back.diary.views import check_user
+
 
 
 def get_partner(self, partner_id, creator):
@@ -13,18 +14,6 @@ def get_partner(self, partner_id, creator):
         return found_partner
     except models.Partner.DoesNotExist:
         return None
-
-
-class PartnerList(APIView):
-
-    @method_decorator(check_user())
-    def get(selg, request, user, format=None):
-
-        partners = models.Partner.objects.filter(creator=user)
-
-        serializer = serializers.PartnerListSerializer(partners, many=True)
-
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
 class Partner(APIView):
