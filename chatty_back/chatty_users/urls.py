@@ -5,5 +5,6 @@ from . import views
 app_name = "chatty_users"
 urlpatterns = [
     path('', views.Main.as_view(), name='diary feed'),
-    path("newuser/", views.NewUser.as_view(), name='first login user'), #hash값 처음으로 반환
+    path('newuser/', views.NewUser.as_view(), name='first login user'), #hash값 처음으로 반환
+    path('partners/', views.PartnerList.as_view(), name='partnser list')
 ]

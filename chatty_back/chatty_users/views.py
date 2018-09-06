@@ -48,3 +48,13 @@ class Main(APIView):
         serializer = serializers.MainSerializer(user)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+class PartnerList(APIView):
+
+    @method_decorator(check_user())
+    def get(self, request, user, format=None):
+
+        serializer = serializers.PartnerListSerializer(user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
