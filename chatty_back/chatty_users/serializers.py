@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from chatty_back.partners.serializers import MainPartnerSerializer
+from chatty_back.partners import serializers as partners_serializers
 from chatty_back.diary.serializers import MainDiarySerializer
 from . import models
 
@@ -29,7 +29,7 @@ class NewUserSerializer(serializers.ModelSerializer):
 
 class MainSerializer(serializers.ModelSerializer):
 
-    partner = MainPartnerSerializer()
+    partner = partners_serializers.MainPartnerSerializer()
     diaries = MainDiarySerializer(many=True)
 
     class Meta:
@@ -37,4 +37,15 @@ class MainSerializer(serializers.ModelSerializer):
         fields = (
             'partner',
             'diaries'
+        )
+
+
+class PartnerListSerializer(serializers.ModelSerializer):
+
+    partners = partners_serializers.PartnerListSerializer(many=True)
+
+    class Meta:
+        model = models.ChattyUser
+        fields = (
+            'partners',
         )
