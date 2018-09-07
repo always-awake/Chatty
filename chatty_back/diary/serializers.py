@@ -86,6 +86,7 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
         model = models.Single_diary
         fields = (
             'weather',
+            'feeling',
             'questions',
             'answers',
             'created_at',
@@ -128,7 +129,7 @@ class StartChatSerializer(serializers.ModelSerializer):
 
 class MainDiarySerializer(serializers.ModelSerializer):
     
-    last_answer = MainAnswerSerializer(many=True)
+    last_answer = MainAnswerSerializer()
     diary_id = serializers.IntegerField(source='id')
 
     class Meta:
