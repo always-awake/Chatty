@@ -110,7 +110,7 @@ class LastAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Single_diary
         fields = (
-            'answer',
+            'answers',
         )
 
 
@@ -129,7 +129,7 @@ class StartChatSerializer(serializers.ModelSerializer):
 
 class MainDiarySerializer(serializers.ModelSerializer):
     
-    answer = MainAnswerSerializer()
+    answers = MainAnswerSerializer(many=True)
     diary_id = serializers.IntegerField(source='id')
 
     class Meta:
@@ -137,7 +137,7 @@ class MainDiarySerializer(serializers.ModelSerializer):
         fields = (
             'diary_id',
             'created_at',
-            'answer',
+            'answers',
             #main_image',
         )
 

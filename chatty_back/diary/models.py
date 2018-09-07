@@ -103,9 +103,9 @@ class Single_diary(TimeStampedModel):
 
     # answer
     @property 
-    def answer(self):
-        answers = list(self.answers.all())
-        return answers[-1]
+    def answers(self):
+        answers = self.answers.all()
+        return answers
 
     # main diary_image
     #@property
