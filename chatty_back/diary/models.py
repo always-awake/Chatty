@@ -27,7 +27,7 @@ class Question(TimeStampedModel):
         )
 
     def __str__(self):
-        return '{} - creator: {}'.format(self.message, self.creator.name)
+        return self.message
 
 
 @python_2_unicode_compatible
@@ -141,7 +141,7 @@ class Single_diary(TimeStampedModel):
         #    pass
 
     def __str__(self):
-        return 'creator: {} - id: {}'.format (self.creator.name, self.id)
+        return 'creator: {} - id: {}'.format (self.creator.name, self.state)
 
 
 @python_2_unicode_compatible
