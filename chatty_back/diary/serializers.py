@@ -81,10 +81,12 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
 
     answers = AnswerSerializer_view(many=True)
     questions = QuestionSerializer(many=True)
-
+    diary_id = serializers.IntegerField(source='id')
+    
     class Meta:
         model = models.Single_diary
         fields = (
+            'diary_id',
             'weather',
             'feeling',
             'questions',
@@ -141,6 +143,14 @@ class MainDiarySerializer(serializers.ModelSerializer):
             #main_image',
         )
 
+
+class FeelingSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Single_diary
+        fields = (
+            'feeling',
+        )
 
 ## 임시 APi
 class QS_Serializer(serializers.ModelSerializer):
