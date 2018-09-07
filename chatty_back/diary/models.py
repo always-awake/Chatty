@@ -101,12 +101,44 @@ class Single_diary(TimeStampedModel):
     def question(self):
         return self.questions[0]
 
-    # last_answer
+    # answer
     @property 
-    def last_answer(self):
+    def answer(self):
         answers = list(self.answers.all())
         return answers[-1]
 
+    # main diary_image
+    #@property
+    #def main_image(self):
+
+        #images = []
+
+        #answers = self.answers.all()
+        
+        #for answer in answers:
+            
+        #    image = getattr(answer, 'image')
+
+        #    images.append(image)
+        #    print(type(images))
+        #    print(images.__len__)
+        #    print(images[0])
+        #if images[-1] is None:
+        #    print(images[-1])
+        #    re_images = []
+
+        #    for image in images:
+
+        #        if image is None:
+
+        #            re_images.append(image)
+
+        #    image = random.choice(re_images)
+            
+        #    return image
+
+        #else:
+        #    pass
 
     def __str__(self):
         return 'creator: {} - id: {}'.format (self.creator.name, self.id)
