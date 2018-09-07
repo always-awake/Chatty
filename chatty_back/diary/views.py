@@ -52,25 +52,25 @@ class Startchat(APIView):
     @method_decorator(check_user())
     def post(self, request, user, format=None):
 
-        request_day = timezone.localtime().day
+        #request_day = timezone.localtime().day
+        #print(request_day)
+        #try: 
+            #today_diary = models.Single_diary.objects.get(creator=user, created_at__day=request_day)
+            #return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
 
-        try: 
-            today_diary = models.Single_diary.objects.get(creator=user, created_at__day=request_day)
-            return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
+        #except models.Single_diary.DoesNotExist:
 
-        except models.Single_diary.DoesNotExist:
+        weather = get_weather(self, 'Seoul')
 
-            weather = get_weather(self, 'Seoul')
+        question_set = models.Question_set.objects.get(id=1) # 테스트 -> 이후에 랜덤 추출로 변경 필요
 
-            question_set = models.Question_set.objects.get(id=1) # 테스트 -> 이후에 랜덤 추출로 변경 필요
+        new_diary = models.Single_diary.objects.create(creator=user, question_set=question_set, partner=user.partner, weather=weather)
 
-            new_diary = models.Single_diary.objects.create(creator=user, question_set=question_set, partner=user.partner, weather=weather)
+        new_diary.save()
 
-            new_diary.save()
+        serializer = serializers.StartChatSerializer(new_diary)
 
-            serializer = serializers.StartChatSerializer(new_diary)
-
-            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+        return Response(data=serializer.data, status=status.HTTP_201_CREATED)
             
 
 class Chat(APIView):
