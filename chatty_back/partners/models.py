@@ -27,7 +27,5 @@ class Partner(models.Model):
     
     @property
     def days_together(self):
-        
-        days_together = (timezone.now().day - self.created_at.day) + 1
-
+        days_together = (timezone.localtime().day - self.created_at.day) + 1
         return abs(days_together)

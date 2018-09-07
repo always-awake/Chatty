@@ -52,7 +52,7 @@ class Startchat(APIView):
     @method_decorator(check_user())
     def post(self, request, user, format=None):
 
-        request_day = timezone.now().day
+        request_day = timezone.localtime().day
         
         try: 
             today_diary = models.Single_diary.objects.get(created_at__day=request_day)
@@ -133,7 +133,7 @@ class Feeling(APIView):
         except models.Single_diary.DoesNotExist:
             return Response(status=status.HTTP_204_NO_CONTENT)
 
-        serializer = serializers.FeelingSerializer(data=request.data)
+        serializer = serializers.FeelingSerializer(diary, data=request.data)
 
         if serializer.is_valid():
 
@@ -166,7 +166,7 @@ class ThisMonth_Calendar(APIView):
     @method_decorator(check_user())
     def get(self, request, user, format=None):
 
-        request_month = timezone.now().month
+        request_month = timezone.localtime().month
 
         user_diaries = models.Single_diary.objects.filter(
             creator=user, created_at__month=request_month
