@@ -75,7 +75,6 @@ LOCAL_APPS = [
     'chatty_back.diary.apps.DiaryConfig',  # diary app
     'chatty_back.partners.apps.PartnersConfig',  # partners app
     'chatty_back.chatty_users.apps.ChattyUsersConfig',  # chatty_users app
-    'chatty_back.weather.apps.WeatherConfig',  # weather app
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
