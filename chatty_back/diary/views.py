@@ -53,9 +53,9 @@ class Startchat(APIView):
     def post(self, request, user, format=None):
 
         request_day = timezone.localtime().day
-        
+
         try: 
-            today_diary = models.Single_diary.objects.get(created_at__day=request_day)
+            today_diary = models.Single_diary.objects.get(creator=user, created_at__day=request_day)
             return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
 
         except models.Single_diary.DoesNotExist:
