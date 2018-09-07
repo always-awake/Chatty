@@ -30,4 +30,4 @@ class Partner(models.Model):
         
         days_together = (timezone.now().day - self.created_at.day) + 1
 
-        return days_together
+        return abs(days_together)
