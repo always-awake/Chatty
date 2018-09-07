@@ -67,3 +67,13 @@ class MainPartnerSerializer(serializers.ModelSerializer):
             'diary_count',
             'days_together',
         )
+
+
+class DiaryDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Partner
+        fields = (
+            'profile_image',
+            'name',
+        )

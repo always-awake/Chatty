@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from . import models
 from chatty_back.chatty_users import serializers as chattyuser_serializers
-
+from chatty_back.partners import serializers as partners_serializers
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -82,10 +82,12 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
     answers = AnswerSerializer_view(many=True)
     questions = QuestionSerializer(many=True)
     diary_id = serializers.IntegerField(source='id')
+    partner = partners_serializers.DiaryDetailSerializer()
     
     class Meta:
         model = models.Single_diary
         fields = (
+            'partner',
             'diary_id',
             'weather',
             'feeling',
