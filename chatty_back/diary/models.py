@@ -104,13 +104,9 @@ class Single_diary(TimeStampedModel):
     # last_answer
     @property 
     def last_answer(self):
-        answers = self.answers.all()
-        return answers
+        answers = list(self.answers.all())
+        return answers[-1]
 
-    @property
-    def answers(self):
-        answers = answers.all()
-        return answers
 
     def __str__(self):
         return 'creator: {} - id: {}'.format (self.creator.name, self.id)
@@ -131,6 +127,6 @@ class User_answer(TimeStampedModel):
         ordering = ["id"]
 
     def __str__(self):
-        return self.answer
+        return self.label
 
 
