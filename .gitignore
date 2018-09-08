@@ -279,8 +279,6 @@ pip-selfcheck.json
 
 ### Project template
 
-chatty_back/media/
-
 .pytest_cache/
 .env
 .envs/*
