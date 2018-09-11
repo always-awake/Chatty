@@ -26,7 +26,7 @@ class NewUserSerializer(serializers.ModelSerializer):
         )
         extra_kwargs = {'name': {'required': True}}
 
-
+    
 class MainSerializer(serializers.ModelSerializer):
 
     partner = partners_serializers.MainPartnerSerializer()
