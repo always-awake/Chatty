@@ -3,12 +3,12 @@ from django.utils import timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-import datetime
 from chatty_back.chatty_users import models as chattyuser_models
 from chatty_back.partners import models as partners_models
 from . import models, serializers
-import requests
-import json
+import datetime 
+import requests # 날씨 API에 사용
+import json # 날씨 API에 사용
 
 
 # request 유저가 회원가입이 되어 있는 유저인지 확인하는 함수
@@ -53,16 +53,14 @@ class Startchat(APIView):
     def post(self, request, user, format=None):
 
         request_day = timezone.localtime().day
-        print(request_day)
-        try: 
-            today_diary = models.Single_diary.objects.get(creator=user, created_at__day=request_day)
-            return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
 
-        except models.Single_diary.DoesNotExist:
-
+        #try: 
+            #today_diary = models.Single_diary.objects.get(creator=user, created_at__day=request_day)
+            #return Response(status=status.HTTP_401_UNAUTHORIZED) # 이미 당일 작성한 일기가 있을 경우, 재작성 불가능
+        #except models.Single_diary.DoesNotExist:
         weather = get_weather(self, 'Seoul')
-
-        question_set = models.Question_set.objects.get(id=1) # 테스트 -> 이후에 랜덤 추출로 변경 필요
+        
+        question_set = models.Question_set.objects.order_by("?").first() # 테스트 -> 이후에 랜덤 추출로 변경 필요
 
         new_diary = models.Single_diary.objects.create(creator=user, question_set=question_set, partner=user.partner, weather=weather)
 
