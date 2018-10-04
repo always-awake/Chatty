@@ -139,3 +139,21 @@ class Partner_Main(APIView):
             serializer = serializers.MainPartnerSerializer(found_partner)
 
             return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+class PartnerProfile_setting(APIView):
+
+    @method_decorator(check_user())
+    def get(self, request, user, format=None):
+
+        found_partner = user.partner
+
+        if found_partner is None:
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        else:
+
+            serializer = serializers.PartnerProfileSerializer(found_partner)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
