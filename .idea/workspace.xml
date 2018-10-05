@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48508488-92e2-4504-9ddf-877b037fdd73" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/chatty_back/partners/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatty_back/partners/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatty_back/partners/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatty_back/partners/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatty_back/partners/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatty_back/partners/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="48508488-92e2-4504-9ddf-877b037fdd73" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

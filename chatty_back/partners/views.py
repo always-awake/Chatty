@@ -32,7 +32,13 @@ class Partner(APIView):
 
             if serializer.is_valid():
 
-                serializer.save(creator=user)
+                new_partner = serializer.save(creator=user)
+                #파트너가 생성된 후, 직전에 생성된 파트너를 함께 일기 쓸 파트너로 선택하기
+                user.partner = new_partner
+
+                user.save()
+
+                print(user.partner.name)
 
                 return Response(data=serializer.data, status=status.HTTP_201_CREATED)
                 
