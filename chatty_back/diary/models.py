@@ -152,7 +152,7 @@ class User_answer(TimeStampedModel):
     diary = models.ForeignKey(Single_diary, on_delete=models.CASCADE, related_name='answers')
     creator = models.ForeignKey(chattyuser_models.ChattyUser, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    label_image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
     label = models.TextField() # answer 의 내용
 
     class Meta:
