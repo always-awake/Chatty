@@ -30,13 +30,13 @@ class NewUserSerializer(serializers.ModelSerializer):
 class MainSerializer(serializers.ModelSerializer):
 
     partner = partners_serializers.MainPartnerSerializer()
-    diaries = MainDiarySerializer(many=True)
+    complete_diaries = MainDiarySerializer(many=True)
 
     class Meta:
         model = models.ChattyUser
         fields = (
             'partner',
-            'diaries'
+            'complete_diaries',
         )
 
 
