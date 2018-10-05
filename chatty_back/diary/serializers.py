@@ -34,6 +34,7 @@ class AnswerSerializer_store(serializers.ModelSerializer):
     class Meta:
         model = models.User_answer
         fields = (
+            'image',
             'label',
         )
 
