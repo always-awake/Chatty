@@ -1,5 +1,5 @@
 ## API Specification
-------------
+
 ### Start Chat
 채팅을 처음 시작했을 때
 
