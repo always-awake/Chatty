@@ -1,5 +1,15 @@
-<<<<<<< HEAD
-=======
+## Chatty 채팅식 다이어리 
+* Android app
+* Django
+* PostgreSQL
+
+## 앱 실행 화면
+<img src="./chatty_back/static/images/readmeimg/chatty.png" width="32%" height="32%">
+
+<img src="./chatty_back/static/images/readmeimg/chatty2.png" width="32%" height="32%">
+
+<img src="./chatty_back/static/images/readmeimg/chatty3.png" width="32%" height="32%">
+
 ## API Specification
 
 ### Start Chat
@@ -23,7 +33,7 @@
     }
 }
 ```
----------
+
 ### Diary Detail
 다이어리 상세보기
 
@@ -91,7 +101,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
 5. Atmosphere
 6. Clear
 7. Clouds
--------
+
 ### This Month Calendar
 request가 이루어진 달의 달력
 
@@ -130,7 +140,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
     }
 ]
 ```
---------
+
 ### Other Month Calendar
 request가 이루어진 달 외의 달력
 
@@ -156,7 +166,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
     }
 ]
 ```
--------
+
 ### Partner
 
 파트너 생성하기
@@ -190,7 +200,7 @@ Value: 스크린샷 2018-08-13 (예시)
     "bio": "I Love my show!" // 파트너 bio
 }
 ```
----------
+
 ### PartnerList
 
 사용자가 생성한 파트너 리스트 보기
@@ -249,7 +259,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
     "created_at": "2018-08-16" // The first day we met
 }
 ```
-------------
+
 ### PartnerProfile
 
 파트너 수정하기
@@ -289,7 +299,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
 - Response
 // status: HTTP 200 OK
 
---------
+
 ### DeletePartner
 
 파트너 삭제하기
@@ -322,7 +332,7 @@ Value: leemirim
     "unique_user_id": "mJV8yRmBmlD60TVkCUzz0cXBLaTtX3Tk3K3REIMW" // 유저 고유 Hash 값
 }
 ```
-------------
+
 ### Main
 
 메인 화면
@@ -359,7 +369,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
     ]
 }
 ```
-------------
+
 ### Chat
 처음 채팅 시작(startchat) 이후 채팅
 
@@ -412,7 +422,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
     "days_together": 1, // Days we've shared, Read only 필드(수정불가능)
 }
 ```
-------------
+
 ### Main - Diary
 메인 화면의 유저가 작성한 일기 리스트
 
@@ -448,7 +458,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
     }
 ]
 ```
-----------
+
 ### Feeling
 일기를 모두 작성하고, 마지막 유저의 감정 받아오기
 
@@ -507,7 +517,7 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
 }
 
 ```
--------------
+
 ### PartnerProfile_setting
 setting에서 파트너 설정 상세페이지로 이동할 때 필요한 API
 
@@ -533,4 +543,3 @@ Value: SE69KdAOBIMtjS6kZovvrOcmn2hrzO2DlVih6u4o (유저 고유 Hash)
 }
 ```
 
->>>>>>> 6a4677a05b3726ebc9dc0215473d4c1c420962b0
